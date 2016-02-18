@@ -1,0 +1,27 @@
+<ion-view>
+  <ion-nav-title>
+    <span>Reservatórios</span>
+  </ion-nav-title>
+
+  <!-- <ion-nav-buttons side="primary">
+    <button class="button button-icon button-clear ion-android-search"></button>
+  </ion-nav-buttons> -->
+
+  <ion-content overflow-scroll="true" class="report has-header has-footer">
+    <div class="list">
+      <a ng-repeat="item in data" class="item item-icon-left" href="#">
+        <i class="icon ion-waterdrop"></i>
+        {{ item.name }}
+        <span class="item-note">
+          {{ item.data.volume_armazenado }}
+        </span>
+      </a>
+    </div>
+  </ion-content>
+
+  <div class="tabs tabs-icon-top">
+    <a class="tab-item">
+      <i class="icon ion-android-calendar"></i> Test
+    </a>
+  </div>
+</ion-view>
