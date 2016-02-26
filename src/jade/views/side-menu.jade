@@ -1,0 +1,22 @@
+ion-side-menus(enable-menu-with-back-views='false')
+	ion-side-menu-content.post-size-14px
+		ion-nav-bar.bar.app-top-bar
+			ion-nav-buttons(side='left')
+				button.button.button-icon.button-clear.ion-navicon(menu-toggle='left')
+			//
+				ion-nav-buttons(side='right')
+					button.button.button-icon.button-clear.ion-android-exit
+
+		ion-nav-view(name='menuContent')
+	ion-side-menu.main-menu(side='left', expose-aside-when='large')
+		ion-content
+			ion-list
+				//
+					ion-item.item-icon-left(nav-clear='', menu-close='', ui-sref='app.settings')
+						i.icon.ion-gear-a
+						h2.menu-text Settings
+
+				ion-item.item-icon-left.item-complex(nav-clear='', menu-close='')
+					a.item-content(ng-click='exit()')
+						i.icon.ion-android-exit
+						h2.menu-text Sair

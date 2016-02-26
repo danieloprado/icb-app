@@ -1,7 +1,7 @@
 (angular => {
   'use strict';
 
-  angular.module('app.config', [])
+  angular.module('app')
 
   .constant('APP_NAME', 'Tegra Ionic Seed')
     .constant('VERSION', {

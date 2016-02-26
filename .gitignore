@@ -15,6 +15,7 @@ hooks/after_prepare/050_clean_obfuscation.js
 hooks/after_prepare/060_add_platform_class.js
 tmp/
 dist/
+www/
 www/fonts/
 .DS_Store
 www/css/

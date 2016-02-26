@@ -1,20 +1,7 @@
 (angular => {
   'use strict';
 
-  angular.module('app', [
-    'ionic',
-    'underscore',
-    'moment',
-    'ngCordova',
-    'ngStorage',
-    'app.config',
-    'app.controllers',
-    'app.views',
-    'app.directives',
-    'app.factories',
-    'app.services',
-    'app.filters'
-  ])
+  angular.module('app')
 
   // Add constants to the rootScope
   .run(['$rootScope', 'VERSION', 'APP_NAME', ($rootScope, VERSION, APP_NAME) => {

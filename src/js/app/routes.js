@@ -1,4 +1,3 @@
-
 (angular => {
   'use strict';
 
@@ -8,10 +7,10 @@
 
     $stateProvider
 
-    .state('app', {
+      .state('app', {
       abstract: true,
       templateUrl: 'views/side-menu.html',
-      controller: 'appCtrl'
+      controller: 'app.menuCtrl'
     })
 
     .state('app.start', {
@@ -19,7 +18,7 @@
       views: {
         'menuContent': {
           templateUrl: 'views/start.html',
-          controller: 'startCtrl'
+          controller: 'app.startCtrl'
         }
       }
     });

@@ -1,0 +1,7 @@
+.item.item-divider.card-heding
+	.tabs-striped
+		.tabs
+			a.tab-item(ng-repeat='tab in tabs', ng-click='select(tab)', ng-class='{ active: tab.selected }') {{tab.title}}
+
+.item.item-body
+	.tabs-content(ng-transclude='')

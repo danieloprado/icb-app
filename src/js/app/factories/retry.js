@@ -1,46 +1,10 @@
 (angular => {
   'use strict';
 
-  angular.module('app.factories', [])
+  angular.module('app')
+    .factory('RetryService', ['$q', '$ionicPopup', RetryService]);
 
-  .factory('Loader', ['$rootScope', '$q', '_', '$ionicLoading', ($rootScope, $q, _, $ionicLoading) => {
-
-    const promises = [];
-    const messages = [];
-
-    const emitChange = () => {
-      if (messages.length === 0) {
-        $ionicLoading.hide();
-      } else {
-        const msg = '<ion-spinner icon="spiral"></ion-spinner><br/>' + messages.join("<br>");
-        $ionicLoading.show({
-          template: msg
-        });
-      }
-    };
-
-    return (msg, target) => {
-
-      const promise = target;
-
-      promises.push(promise);
-      messages.push(msg);
-
-      promise.finally(() => {
-        const index = promises.indexOf(promise);
-        promises.splice(index, 1);
-        messages.splice(index, 1);
-
-        emitChange();
-      });
-
-      emitChange();
-      return promise;
-    };
-
-  }])
-
-  .factory('RetryService', ['$q', '$ionicPopup', ($q, $ionicPopup) => {
+  function RetryService($q, $ionicPopup) {
 
     const statusMessages = {
       0: "Nenhuma resposta do servidor, verifique sua conexão",
@@ -76,7 +40,7 @@
             cancelText: 'Cancelar'
           }).then(ok => {
             if (!ok) {
-              throw("cancelled");
+              throw ("cancelled");
             }
             return execute(target, deferred);
           }).catch(deferred.reject);
@@ -90,7 +54,6 @@
     };
 
     return retry;
-
-  }]);
+  }
 
 })(angular);

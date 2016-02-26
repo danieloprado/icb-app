@@ -14,6 +14,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder "../", "/project", create: true
 
   config.vm.provider "virtualbox" do |vb|
+     vb.name = "icb-app"
      vb.customize ["modifyvm", :id, "--usb", "on"]
      #vb.customize ["modifyvm", :id, "--usbehci", "on"]
      vb.customize ["usbfilter", "add", "0", "--target", :id, "--name", "android", "--vendorid", "0x18d1"]

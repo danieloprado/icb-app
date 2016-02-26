@@ -1,19 +1,32 @@
+var gulp = require('gulp'),
+  $ = require('gulp-load-plugins')(),
+  rimraf = require('rimraf');
 
-const gulp = require('gulp'),
-      sass = require('gulp-sass'),
-      jshint = require('gulp-jshint'),
-      sourcemaps = require('gulp-sourcemaps'),
-      templateCache = require('gulp-angular-templatecache'),
-      concat = require('gulp-concat'),
-      clean = require('gulp-clean'),
-      uglify = require('gulp-uglify'),
-      babel = require('gulp-babel');
+var paths = {
+  js: [
+    'src/js/app/module.js',
+    'src/js/auth/module.js',
+    'src/js/**/*.js'
+  ],
+  sass: 'src/scss/app.scss',
+  jade: 'src/jade/**/*.jade',
 
-const paths = {
-  sass: ['src/scss/**/*.scss'],
-  js: ['src/js/**/*.js'],
-  templatecache: ['src/views/**/*.html'],
-  jslibs: [
+  dist: 'www/',
+  imgs: 'src/imgs/**/*',
+
+  fonts: [
+    'bower_components/ionic/release/fonts/*.woff'
+  ],
+
+  cssLibs: [
+    'bower_components/animate.css/animate.min.css',
+    'bower_components/angular-material/angular-material.min.css',
+    'bower_components/angular-material-data-table/dist/md-data-table.min.css',
+    'bower_components/angular-material-icons/angular-material-icons.css',
+    'bower_components/material-design-icons/iconfont/material-icons.css'
+  ],
+
+  jsLibs: [
     'src/libs/winstore-jscompat.js',
     'bower_components/ionic/release/js/ionic.bundle.min.js',
     'bower_components/angular-i18n/angular-locale_pt-br.js',
@@ -25,78 +38,80 @@ const paths = {
     'bower_components/onezone-datepicker/dist/onezone-datepicker.min.js',
     'bower_components/ionic-filter-bar/dist/ionic.filter.bar.min.js',
     'bower_components/angular-ui-mask/dist/mask.min.js'
-  ],
-  fonts: ['bower_components/ionic/release/fonts/*.woff'],
-  tempFiles: [
-    'www/fonts',
-    'www/css',
-    'www/js',
-    'www/maps'
   ]
 };
 
-gulp.task('clean-fonts', () =>
-  gulp.src('www/fonts').pipe(clean())
-);
+//CLEAN
+gulp.task('clean', cb => rimraf(paths.dist, cb));
 
-gulp.task('fonts', ['clean-fonts'], () =>
-  gulp.src(paths.fonts).pipe(gulp.dest('www/fonts'))
-);
+//LIBS
+gulp.task('css:libs', () =>
+  gulp.src(paths.cssLibs)
+  .pipe($.concat('libs.min.css'))
+  .pipe(gulp.dest(paths.dist + 'css')));
 
-gulp.task('sass', ['fonts'], () =>
-  gulp.src('./src/scss/ionic.app.scss')
-    .pipe(sourcemaps.init())
-      .pipe(sass({
-        errLogToConsole: true,
-        outputStyle: 'compressed'
-      }))
-    .pipe(sourcemaps.write('../maps'))
-    .pipe(gulp.dest('./www/css/'))
-);
+gulp.task("js:libs", () =>
+  gulp.src(paths.jsLibs)
+  .pipe($.concat("libs.min.js"))
+  .pipe(gulp.dest(paths.dist + "js")));
 
-gulp.task('templatecache', () =>
-  gulp.src(paths.templatecache)
-    .pipe(templateCache({standalone:true, filename:'views.js', module:'app.views', root:'views/'}))
-    .pipe(gulp.dest('./src/js/'))
-);
+gulp.task('imgs', () =>
+  gulp.src(paths.imgs)
+  .pipe(gulp.dest(paths.dist + 'imgs')));
 
-gulp.task('lint', () =>
+gulp.task('fonts', () =>
+  gulp.src(paths.fonts)
+  .pipe(gulp.dest(paths.dist + 'fonts')));
+
+gulp.task('libs', ['css:libs', 'js:libs', 'imgs', 'fonts']);
+
+//SASS
+gulp.task("sass", () =>
+  gulp.src(paths.sass)
+  .pipe($.sourcemaps.init())
+  .pipe($.sass({
+    outputStyle: "compressed"
+  }).on('error', $.sass.logError))
+  .pipe($.autoprefixer({
+    browsers: ["last 2 versions", "ie >= 9"]
+  }))
+  .pipe($.sourcemaps.write())
+  .pipe(gulp.dest(paths.dist + 'css'))
+  .pipe($.livereload({
+    start: true
+  })));
+
+//JADE
+gulp.task('jade', () =>
+  gulp.src(paths.jade)
+  .pipe($.jade({
+    pretty: true
+  }))
+  .pipe(gulp.dest(paths.dist)));
+
+//JS
+gulp.task('js:hint', () =>
   gulp.src(paths.js)
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'))
-);
+  .pipe($.jshint())
+  .pipe($.jshint.reporter('default')));
 
-gulp.task('js', ['lint', 'templatecache'], () =>
+gulp.task('js', ['js:hint'], () =>
   gulp.src(paths.js)
-    .pipe(sourcemaps.init())
-      .pipe(concat('app.min.js'))
-      .pipe(babel({
-        presets: ['es2015']
-      }))
-      //.pipe(uglify())
-    .pipe(sourcemaps.write('../maps'))
-    .pipe(gulp.dest('./www/js'))
-);
+  .pipe($.sourcemaps.init())
+  .pipe($.concat('all.min.js'))
+  .pipe($.babel({
+    presets: ['es2015']
+  }))
+  .pipe($.uglify())
+  .pipe($.sourcemaps.write())
+  .pipe(gulp.dest(paths.dist + 'js')));
 
-gulp.task('jslibs', () =>
-  gulp.src(paths.jslibs)
-    .pipe(sourcemaps.init())
-      .pipe(concat('libs.min.js'))
-    .pipe(sourcemaps.write('../maps'))
-    .pipe(gulp.dest('./www/js'))
-);
-
-gulp.task('watch', ['default'], () => {
-  gulp.watch(paths.sass, ['sass']);
+gulp.task('watch', function() {
+  $.livereload.listen();
+  gulp.watch('src/scss/**/*.scss', ['sass']);
+  gulp.watch(paths.jade, ['jade']);
   gulp.watch(paths.js, ['js']);
-  gulp.watch(paths.templatecache, ['templatecache']);
 });
 
-gulp.task('clean', () =>
-  gulp.src('./www/maps', {read: false})
-    .pipe(clean())
-);
-
-gulp.task('default', ['sass', 'js', 'jslibs']);
-
-gulp.task('build', ['default'], () => gulp.start('clean'));
+gulp.task('compile', ['libs', 'jade', 'sass', 'js']);
+gulp.task('default', ['compile', 'watch']);
