@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('app')
-    .factory('Loader', ['$rootScope', '$q', '_', '$ionicLoading', Loader]);
+    .factory('Loader', ['$rootScope', '$q', 'lodash', '$ionicLoading', Loader]);
 
   function Loader($rootScope, $q, _, $ionicLoading) {
     const promises = [];
