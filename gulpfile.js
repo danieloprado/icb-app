@@ -9,6 +9,7 @@ var paths = {
     'src/js/**/*.js'
   ],
   sass: 'src/scss/app.scss',
+  sassTheme: 'src/scss/theme.scss',
   jade: 'src/jade/**/*.jade',
 
   dist: 'www/',
@@ -19,11 +20,7 @@ var paths = {
   ],
 
   cssLibs: [
-    'bower_components/animate.css/animate.min.css',
-    'bower_components/angular-material/angular-material.min.css',
-    'bower_components/angular-material-data-table/dist/md-data-table.min.css',
-    'bower_components/angular-material-icons/angular-material-icons.css',
-    'bower_components/material-design-icons/iconfont/material-icons.css'
+    'bower_components/animate.css/animate.min.css'
   ],
 
   jsLibs: [
@@ -63,7 +60,7 @@ gulp.task('fonts', () =>
   gulp.src(paths.fonts)
   .pipe(gulp.dest(paths.dist + 'fonts')));
 
-gulp.task('libs', ['css:libs', 'js:libs', 'imgs', 'fonts']);
+gulp.task('libs', ['css:libs', 'js:libs', 'imgs', 'fonts', 'sass:theme']);
 
 //SASS
 gulp.task("sass", () =>
@@ -76,10 +73,20 @@ gulp.task("sass", () =>
     browsers: ["last 2 versions", "ie >= 9"]
   }))
   .pipe($.sourcemaps.write())
-  .pipe(gulp.dest(paths.dist + 'css'))
-  .pipe($.livereload({
-    start: true
-  })));
+  .pipe(gulp.dest(paths.dist + 'css')));
+
+//SASS Theme
+gulp.task("sass:theme", () =>
+  gulp.src(paths.sassTheme)
+  .pipe($.sourcemaps.init())
+  .pipe($.sass({
+    outputStyle: "compressed"
+  }).on('error', $.sass.logError))
+  .pipe($.autoprefixer({
+    browsers: ["last 2 versions", "ie >= 9"]
+  }))
+  .pipe($.sourcemaps.write())
+  .pipe(gulp.dest(paths.dist + 'css')));
 
 //JADE
 gulp.task('jade', () =>
@@ -107,8 +114,8 @@ gulp.task('js', ['js:hint'], () =>
   .pipe(gulp.dest(paths.dist + 'js')));
 
 gulp.task('watch', function() {
-  $.livereload.listen();
-  gulp.watch('src/scss/**/*.scss', ['sass']);
+  gulp.watch(['src/scss/**/*.scss', '!src/scss/**/theme.scss'], ['sass']);
+  gulp.watch(['src/scss/**/theme.scss', 'src/scss/**/_variables.scss'], ['sass:theme']);
   gulp.watch(paths.jade, ['jade']);
   gulp.watch(paths.js, ['js']);
 });

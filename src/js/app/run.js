@@ -2,11 +2,11 @@
   'use strict';
 
   angular.module('app')
-    .run(['$rootScope', 'VERSION', 'APP_NAME', appNameVersion])
+    .run(['$rootScope', 'VERSION', 'APP_NAME', '$localStorage', appNameVersion])
     .run(['$ionicPlatform', configKeyboard])
     .run(['$ionicPlatform', '$ionicHistory', '$rootScope', '$state', configBackButton]);
 
-  function appNameVersion($rootScope, VERSION, APP_NAME) {
+  function appNameVersion($rootScope, VERSION, APP_NAME, $localStorage) {
     $rootScope.VERSION = VERSION;
     $rootScope.APP_NAME = APP_NAME;
   }

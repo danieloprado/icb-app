@@ -1,3 +1,8 @@
+@import "../../bower_components/bourbon/app/assets/stylesheets/_bourbon";
+@import "../../bower_components/ionic/scss/ionic";
+@import '_variables';
+@import '_side-menu';
+
 * {
   color: $content-color;
 }
@@ -7,7 +12,8 @@
   flex-direction: column;
   justify-content: center;
 
-  .row, .scroll {
+  .row,
+  .scroll {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -169,7 +175,7 @@ ion-spinner.spinner-on-load {
     -webkit-perspective: 1000;
     -webkit-transform: translate3d(0,0,0);
     -webkit-transform: translateZ(0);
-    transition: width .8s ease-out;
+    transition: width 0.8s ease-out;
     display: block;
     height: 100%;
     background: #8BC34A;
@@ -201,7 +207,7 @@ ion-spinner.spinner-on-load {
     }
 
     .title {
-      font-weight:500;
+      font-weight: 500;
     }
 
     .description {
@@ -211,15 +217,14 @@ ion-spinner.spinner-on-load {
 }
 
 .search {
-  .item, .item-content p {
+  .item,
+  .item-content p {
     white-space: normal !important;
   }
 }
 
-.forms-view
-{
-  ion-content
-  {
+.forms-view {
+  ion-content {
     -webkit-overflow-scrolling: touch !important;
     overflow: scroll !important;
   }
@@ -228,13 +233,13 @@ ion-spinner.spinner-on-load {
 .item-input-inset .item-input-wrapper input {
   width: 100%;
 }
-
 // Override Ionic styles
 .clearfix:before,
 .clearfix:after {
-  content:"";
-  display:table;
+  content: "";
+  display: table;
 }
+
 .clearfix:after {
-  clear:both;
+  clear: both;
 }

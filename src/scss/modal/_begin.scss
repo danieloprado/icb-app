@@ -1,0 +1,32 @@
+.begin-screen {
+  background: url("../imgs/background.png") no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  .main-content {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    right: 10px;
+    bottom: 0;
+    margin: auto;
+    height: 280px;
+    text-align: center;
+    text-shadow: 2px 2px 3px $content-color;
+
+    img.logo {
+      max-width: 100px;
+      max-height: 100px;
+    }
+
+    h1,
+    p {
+      color: $white;
+    }
+
+    ion-spinner svg {
+      stroke: $white;
+      margin-top: 20px;
+    }
+  }
+}

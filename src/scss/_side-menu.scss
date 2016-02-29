@@ -1,22 +1,37 @@
-ion-side-menu
-{
-  ion-content
-  {
-    background-color: darken($main-menu-bg, 12);
+ion-side-menu {
+  ion-content {
+    background-color: $main-menu-bg !important;
   }
 
-  ion-item.item
-  {
-    border-right:none;
-    border-left:none;
+  header {
+    background: $main-menu-bg-header;
+    padding: 10px;
+
+    .logo {
+      text-align: center;
+
+      p {
+        color: $white;
+        margin-top: 10px;
+      }
+
+      img {
+        max-width: 100px;
+        max-height: 100px;
+      }
+    }
+  }
+
+  ion-item.item {
+    border-right: none;
+    border-left: none;
     border-color: darken($main-menu-bg, 5);
+    background: none;
 
-    .item-content
-    {
-      background-color: darken($main-menu-bg, 12);
+    .item-content {
+      background-color: transparent !important;
 
-      .icon:before
-      {
+      .icon:before {
         background-color: $main-menu-bg;
         color: $main-menu-color;
         border-radius: 50%;
@@ -27,49 +42,40 @@ ion-side-menu
       }
     }
 
-    .item-content.activated
-    {
+    .item-content.activated {
       background-color: lighten($main-menu-bg, 10);
     }
 
-    .menu-text
-    {
+    .menu-text {
       color: darken($main-menu-color, 20);
-      font-weight:500;
+      font-weight: 500;
     }
   }
 
-  ion-item.item:first-child
-  {
-    border-top:none;
+  ion-item.item:first-child {
+    border-top: none;
   }
 
-  ion-item.item:last-child
-  {
-    border-bottom:none;
+  ion-item.item:last-child {
+    border-bottom: none;
   }
 
-  .heading-item
-  {
-
-    .item-content
-    {
+  .heading-item {
+    .item-content {
       height: 120px;
       padding-top: 45px;
       padding-left: 115px;
       background-color: darken($main-menu-bg, 10);
-      padding-bottom: 0px;
+      padding-bottom: 0;
     }
 
-    .user-image-container
-    {
-      width:90px;
+    .user-image-container {
+      width: 90px;
       position: absolute;
       top: 16px;
       left: 12px;
 
-      .user-image
-      {
+      .user-image {
         border-radius: 50%;
         padding: 8px;
         border: 1px solid darken($main-menu-color, 40);
@@ -77,14 +83,12 @@ ion-side-menu
       }
     }
 
-    .greeting
-    {
+    .greeting {
       color: $main-menu-color;
-      font-weight:500;
+      font-weight: 500;
     }
 
-    .message
-    {
+    .message {
       color: darken($main-menu-color, 40);
     }
   }

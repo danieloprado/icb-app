@@ -10,6 +10,11 @@ ion-side-menus(enable-menu-with-back-views='false')
 		ion-nav-view(name='menuContent')
 	ion-side-menu.main-menu(side='left', expose-aside-when='large')
 		ion-content
+			header
+				.logo
+					img.logo(src='imgs/logo.png')
+					p {{church.name}}
+
 			ion-list
 				//
 					ion-item.item-icon-left(nav-clear='', menu-close='', ui-sref='app.settings')

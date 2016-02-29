@@ -1,19 +1,9 @@
 ion-view
 	ion-nav-title
-		span Reservatórios
+		span ICB
 	//
 		ion-nav-buttons(side='primary')
 			button.button.button-icon.button-clear.ion-android-search
 
-	ion-content.report.has-header.has-footer(overflow-scroll='true')
-		.list
-			a.item.item-icon-left(ng-repeat='item in data', href='#')
-				i.icon.ion-waterdrop
-				|         {{ item.name }}
-				span.item-note
-					| {{ item.data.volume_armazenado }}
-
-	.tabs.tabs-icon-top
-		a.tab-item
-			i.icon.ion-android-calendar
-			|  Test
+	ion-content.report.has-header
+		p Hello

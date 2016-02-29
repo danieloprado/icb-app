@@ -8,6 +8,7 @@
     "moment": "~2.11.1",
     "ngstorage": "~0.3.10",
     "ngCordova": "~0.1.23-alpha",
-    "angular-ui-mask": "^1.7.2"
+    "angular-ui-mask": "^1.7.2",
+    "animate.css": "^3.5.1"
   }
 }

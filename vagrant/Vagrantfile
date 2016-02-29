@@ -20,5 +20,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
      vb.customize ["usbfilter", "add", "0", "--target", :id, "--name", "android", "--vendorid", "0x18d1"]
      vb.customize ["usbfilter", "add", "0", "--target", :id, "--name", "motorola", "--vendorid", "0x22b8"]
      vb.customize ["usbfilter", "add", "0", "--target", :id, "--name", "samsunguinho", "--vendorid", "0x04e8"]
+     vb.customize ["usbfilter", "add", "0", "--target", :id, "--name", "xaiomi", "--vendorid", "0x2717"]
     end
 end

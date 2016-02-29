@@ -11,6 +11,6 @@
       number: '0.0.0',
       date: '29/02/2016'
     })
-    .constant('API', 'https://localhost:3000/api/');
+    .constant('API', 'http://localhost:3000/api');
 
 })(angular);

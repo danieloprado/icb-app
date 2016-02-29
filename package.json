@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "icb",
   "version": "0.0.1",
   "description": "",
   "cordovaPlugins": [
@@ -23,7 +23,6 @@
     "gulp-concat": "^2.6.0",
     "gulp-jade": "^1.1.0",
     "gulp-jshint": "^1.12.0",
-    "gulp-livereload": "^3.8.1",
     "gulp-load-plugins": "^1.2.0",
     "gulp-rimraf": "^0.2.0",
     "gulp-sass": "^2.1.0",

@@ -1,6 +1,31 @@
-@import "../../bower_components/bourbon/app/assets/stylesheets/_bourbon";
-@import "../../bower_components/ionic/scss/ionic";
 @import '_mixins';
 @import '_variables';
-@import '_common';
+@import 'modal/_begin';
 @import '_side-menu';
+
+html,
+body {
+  font-size: 16px;
+}
+
+ion-header-bar {
+  .title {
+    font-size: 20px !important;
+    text-align: left !important;
+  }
+
+  &:before {
+    top: 0;
+    box-shadow: 0 0 4px rgba(0,0,0,0.14),0 -1px 8px rgba(0,0,0,0.28);
+    content: "";
+    height: 100%;
+    left: 0;
+    right: 0;
+    position: absolute;
+    will-change: top,left;
+  }
+}
+
+ion-content {
+  background: $content-bg;
+}
