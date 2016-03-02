@@ -3,7 +3,7 @@
 
   angular.module('app')
     .config(['$stateProvider', '$urlRouterProvider', '$localStorageProvider', Routes])
-    .run(['$rootScope', '$localStorage', '$state', CheckRoute]);
+    .run(['$rootScope', '$state', 'auth', CheckRoute]);
 
   function Routes($stateProvider, $urlRouterProvider) {
 
@@ -35,11 +35,9 @@
     $urlRouterProvider.otherwise('/begin');
   }
 
-  function CheckRoute($rootScope, $localStorage, $state) {
-    console.log('church', $localStorage.church);
-
+  function CheckRoute($rootScope, $state, auth) {
     $rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState, fromParams, options) => {
-      if (_.isEmpty($localStorage.church) && toState.name != "app.begin") {
+      if (!auth.hasToken() && toState.name != "app.begin") {
         event.preventDefault();
         $state.go('app.begin');
       }

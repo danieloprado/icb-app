@@ -8,7 +8,11 @@
     "cordova-plugin-device",
     "cordova-plugin-splashscreen",
     "ionic-plugin-keyboard",
-    "cordova-plugin-whitelist"
+    "cordova-plugin-whitelist",
+    {
+      "locator": "https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin.git",
+      "id": "cordova-plugin-x-toast"
+    }
   ],
   "cordovaPlatforms": [
     "android",

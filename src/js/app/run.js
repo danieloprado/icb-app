@@ -13,7 +13,7 @@
 
   function configKeyboard($ionicPlatform) {
     $ionicPlatform.on("deviceready", () => {
-      if (window.cordova && $window.cordova.plugins.Keyboard) {
+      if (window.cordova && window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.close();
         cordova.plugins.Keyboard.disableScroll(false);
       }
@@ -21,7 +21,6 @@
       if (window.StatusBar) {
         StatusBar.styleDefault();
       }
-
     });
   }
 

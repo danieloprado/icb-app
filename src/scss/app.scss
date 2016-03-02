@@ -28,4 +28,8 @@ ion-header-bar {
 
 ion-content {
   background: $content-bg;
+
+  &.overflow-scroll {
+    overflow-y: auto;
+  }
 }

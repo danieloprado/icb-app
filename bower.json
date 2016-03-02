@@ -9,6 +9,7 @@
     "ngstorage": "~0.3.10",
     "ngCordova": "~0.1.23-alpha",
     "angular-ui-mask": "^1.7.2",
-    "animate.css": "^3.5.1"
+    "animate.css": "^3.5.1",
+    "angular-jwt": "^0.0.9"
   }
 }

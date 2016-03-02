@@ -9,13 +9,24 @@
       '$state',
       '$ionicHistory',
       '$ionicModal',
-      '$localStorage',
+      'auth',
+      'loginService',
       'lodash',
       'churchService',
       StartCtrl
     ]);
 
-  function StartCtrl($scope, $rootScope, $timeout, $state, $ionicHistory, $ionicModal, $localStorage, _, churchService) {
+  function StartCtrl(
+    $scope,
+    $rootScope,
+    $timeout,
+    $state,
+    $ionicHistory,
+    $ionicModal,
+    auth,
+    loginService,
+    _,
+    churchService) {
     let modal;
 
     const next = () => {
@@ -29,13 +40,12 @@
       $scope.hide = true;
       next();
 
-
       $timeout(() => {
         modal.hide();
       }, 1000);
     };
 
-    if (!_.isEmpty($localStorage.church)) {
+    if (auth.hasToken()) {
       next();
       return;
     }
@@ -49,7 +59,9 @@
       modal.show();
 
       churchService.list().then((churches) => {
-        $rootScope.church = $localStorage.church = churches[0];
+        return loginService.loginChurch(churches[0]);
+      }).then((token) => {
+        auth.setToken(token);
         hide();
       });
     });

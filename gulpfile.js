@@ -26,7 +26,7 @@ var paths = {
   jsLibs: [
     'src/libs/winstore-jscompat.js',
     'bower_components/ionic/release/js/ionic.bundle.min.js',
-    'bower_components/angular-i18n/angular-locale_pt-br.js',
+
     'bower_components/lunr.js/lunr.min.js',
     'bower_components/underscore/underscore-min.js',
     'bower_components/moment/min/moment.min.js',
@@ -34,7 +34,11 @@ var paths = {
     'bower_components/ngstorage/ngStorage.min.js',
     'bower_components/onezone-datepicker/dist/onezone-datepicker.min.js',
     'bower_components/ionic-filter-bar/dist/ionic.filter.bar.min.js',
-    'bower_components/angular-ui-mask/dist/mask.min.js'
+
+    'bower_components/angular-i18n/angular-locale_pt-br.js',
+    'bower_components/angular-ui-mask/dist/mask.min.js',
+    'bower_components/angular-jwt/dist/angular-jwt.min.js'
+
   ]
 };
 
@@ -109,7 +113,7 @@ gulp.task('js', ['js:hint'], () =>
   .pipe($.babel({
     presets: ['es2015']
   }))
-  .pipe($.uglify())
+  //.pipe($.uglify())
   .pipe($.sourcemaps.write())
   .pipe(gulp.dest(paths.dist + 'js')));
 
