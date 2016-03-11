@@ -1,15 +1,13 @@
 import {App, IonicApp, Platform, MenuController} from 'ionic-angular';
-import {HelloIonicPage} from './pages/hello-ionic/hello-ionic';
+import {StartPage} from './pages/start/start';
 import {ListPage} from './pages/list/list';
-
 
 @App({
   templateUrl: 'build/app.html',
   config: {} // http://ionicframework.com/docs/v2/api/config/Config/
 })
-class MyApp {
-  // make HelloIonicPage the root (or first) page
-  rootPage: any = HelloIonicPage;
+class IcbApp {
+  rootPage: any = StartPage;
   pages: Array<{title: string, component: any}>;
 
   constructor(
@@ -21,7 +19,7 @@ class MyApp {
 
     // set our app's pages
     this.pages = [
-      { title: 'Hello Ionic', component: HelloIonicPage },
+      { title: 'Start', component: StartPage },
       { title: 'My First List', component: ListPage }
     ];
   }
