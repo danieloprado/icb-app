@@ -1,0 +1,1 @@
+{"virtualbox":{"/project":{"create":true,"guestpath":"/project","hostpath":"/home/daniel/projects/icb-app","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/daniel/projects/icb-app/vagrant","disabled":false,"__vagrantfile":true}}}

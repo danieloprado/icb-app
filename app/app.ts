@@ -1,5 +1,5 @@
 import {App, IonicApp, Platform, MenuController} from 'ionic-angular';
-import {StartPage} from './pages/start/start';
+import {StartPage} from './pages/start/startPage';
 import {ListPage} from './pages/list/list';
 
 @App({
@@ -8,7 +8,7 @@ import {ListPage} from './pages/list/list';
 })
 class IcbApp {
   rootPage: any = StartPage;
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, icon: string, component: any}>;
 
   constructor(
     private app: IonicApp,
@@ -19,8 +19,8 @@ class IcbApp {
 
     // set our app's pages
     this.pages = [
-      { title: 'Start', component: StartPage },
-      { title: 'My First List', component: ListPage }
+      { title: 'Start', icon: "home", component: StartPage },
+      { title: 'My First List', icon: "list", component: ListPage }
     ];
   }
 
@@ -44,9 +44,8 @@ class IcbApp {
   }
 
   openPage(page) {
-    // close the menu when clicking a link from the menu
     this.menu.close();
-    // navigate to the new page if it is not the current page
+
     let nav = this.app.getComponent('nav');
     nav.setRoot(page.component);
   }

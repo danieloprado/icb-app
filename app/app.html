@@ -1,12 +1,16 @@
 <ion-menu [content]="content">
 
-  <ion-toolbar>
-    <ion-title>Pages</ion-title>
-  </ion-toolbar>
-
   <ion-content>
+    <header>
+      <img src="img/logo.png" />
+      <p>
+        ICB Sorocaba
+      </p>
+    </header>
+
     <ion-list>
-      <button ion-item *ngFor="#p of pages" (click)="openPage(p)">
+      <button light ion-item *ngFor="#p of pages" (click)="openPage(p)">
+        <ion-icon name="{{p.icon}}" item-left></ion-icon>
         {{p.title}}
       </button>
     </ion-list>
