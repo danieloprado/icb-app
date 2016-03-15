@@ -33,13 +33,11 @@ export class ApiHttp {
   }
 
   get(url: string, options?: RequestOptionsArgs) {
-    console.log(`calling: ${url}`);
     options = this.defaultHeaders(options);
     return this.subscribeForToken(this.http.get(this.API_URL + url, options));
   }
 
   post(url: string, body: any, options?: RequestOptionsArgs) {
-    console.log(`calling: ${url}`);
     options = this.defaultHeaders(options);
     return this.subscribeForToken(this.http.post(this.API_URL + url, JSON.stringify(body), options));
   }

@@ -3,19 +3,26 @@
 // --------------------------------------------------
 // Shared Sass variables go in the app.variables.scss file
 @import 'app.variables';
-// App iOS Variables
-// --------------------------------------------------
-// iOS only Sass variables can go here
-// Ionic iOS Sass
-// --------------------------------------------------
-// Custom App variables must be declared before importing Ionic.
-// Ionic will use its default values when a custom variable isn't provided.
+/*
+ App iOS Variables
+ --------------------------------------------------
+ iOS only Sass variables can go here
+ Ionic iOS Sass
+ --------------------------------------------------
+ Custom App variables must be declared before importing Ionic.
+ Ionic will use its default values when a custom variable isn't provided.
+*/
+$toolbar-ios-active-color: $text-color;
 @import "ionic.ios";
-// App Shared Sass
-// --------------------------------------------------
-// All Sass files that make up this app goes into the app.core.scss file.
-// For simpler CSS overrides, custom app CSS must come after Ionic's CSS.
+/*
+ App Shared Sass
+ --------------------------------------------------
+ All Sass files that make up this app goes into the app.core.scss file.
+ For simpler CSS overrides, custom app CSS must come after Ionic's CSS.
+*/
 @import 'app.core';
-// App iOS Only Sass
-// --------------------------------------------------
-// CSS that should only apply to the iOS app
+/*
+ App iOS Only Sass
+ --------------------------------------------------
+ CSS that should only apply to the iOS app
+*/

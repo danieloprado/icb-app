@@ -1,7 +1,7 @@
 import {App, IonicApp, Platform, MenuController} from 'ionic-angular';
 
 import {StartPage} from './pages/start/startPage';
-import {ListPage} from './pages/list/list';
+import {HomePage} from './pages/home/homePage';
 
 import {ApiHttp} from './providers/apiHttp';
 import {AuthService} from './providers/authService';
@@ -25,14 +25,17 @@ class IcbApp {
   constructor(
     private app: IonicApp,
     private platform: Platform,
-    private menu: MenuController
+    private menu: MenuController,
+    private authService: AuthService
     ) {
+    if (this.authService.hasToken()) {
+      this.rootPage = HomePage;
+    }
+
     this.initializeApp();
 
-    // set our app's pages
     this.pages = [
-      { title: 'Start', icon: "home", component: StartPage },
-      { title: 'My First List', icon: "list", component: ListPage }
+      { title: 'Inicio', icon: "home", component: HomePage }
     ];
   }
 
