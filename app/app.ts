@@ -1,4 +1,5 @@
 import {App, IonicApp, Platform, MenuController} from 'ionic-angular';
+
 import {StartPage} from './pages/start/startPage';
 import {ListPage} from './pages/list/list';
 
@@ -9,7 +10,12 @@ import {LoginService} from './providers/loginService';
 
 @App({
   templateUrl: 'build/app.html',
-  providers: [ApiHttp, AuthService, ChurchService, LoginService],
+  providers: [
+    ApiHttp,
+    AuthService,
+    ChurchService,
+    LoginService
+  ],
   config: {} // http://ionicframework.com/docs/v2/api/config/Config/
 })
 class IcbApp {

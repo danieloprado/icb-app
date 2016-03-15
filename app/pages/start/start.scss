@@ -28,6 +28,8 @@
   ion-spinner {
     position: fixed;
     bottom: 40px;
+    left: 50%;
+    margin-left: -20px;
 
     svg {
       stroke: $white;
