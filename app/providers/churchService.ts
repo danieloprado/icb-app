@@ -9,8 +9,7 @@ import 'rxjs/Rx';
 export class ChurchService {
   constructor(private http: ApiHttp) { }
 
-  list(): Observable<Church[]> {
-    return this.http.get("/church")
-      .map(res => res.json().map(i => new Church(i)));
+  list(): Promise<Church[]> {
+    return this.http.get("/church").toPromise().then(res => res.json().map(i => new Church(i)));
   };
 }

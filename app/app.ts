@@ -6,6 +6,7 @@ import {HomePage} from './pages/home/homePage';
 import {ApiHttp} from './providers/apiHttp';
 import {AuthService} from './providers/authService';
 import {ChurchService} from './providers/churchService';
+import {InformativeService} from './providers/informativeService';
 import {LoginService} from './providers/loginService';
 
 @App({
@@ -14,6 +15,7 @@ import {LoginService} from './providers/loginService';
     ApiHttp,
     AuthService,
     ChurchService,
+    InformativeService,
     LoginService
   ],
   config: {} // http://ionicframework.com/docs/v2/api/config/Config/

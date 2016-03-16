@@ -7,15 +7,40 @@
 
 <ion-content>
 
-  <ion-card>
 
+  <ion-card *ngIf="loadingInformative || !informative">
     <ion-card-header>
-      Card Header
+      Informativo
+    </ion-card-header>
+
+    <ion-card-content text-center *ngIf="loadingInformative">
+      <ion-spinner></ion-spinner>
+    </ion-card-content>
+
+    <ion-card-content *ngIf="!loadingInformative && !informative">
+      Nenhum informativo adicionado
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="!loadingInformative && informative">
+    <ion-card-header>
+      Informativo
     </ion-card-header>
 
     <ion-card-content>
-      Nulla quis lorem ut libero malesuada feugiat. Donec rutrum congue leo eget malesuada. Nulla quis lorem ut libero
+      {{informative.title}}
     </ion-card-content>
+
+    <ion-item>
+      <button primary clear item-left>
+        <ion-icon name="book"></ion-icon>
+        <div>Ver</div>
+      </button>
+      <ion-note item-right>
+        {{informative.date | date:'EEEE, d MMMM y'}}
+      </ion-note>
+    </ion-item>
+
 
   </ion-card>
 

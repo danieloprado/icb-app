@@ -9,8 +9,9 @@ import 'rxjs/Rx';
 export class LoginService {
   constructor(private http: ApiHttp) { }
 
-  byChurch(church: Church): Observable<string> {
+  byChurch(church: Church): Promise<string> {
     return this.http.post("/auth/login-church", { id: church._id })
-      .map(res => res.json().token);
+      .toPromise()
+      .then(res => res.json().text);
   }
 }

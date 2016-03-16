@@ -17,9 +17,9 @@ export class StartPage implements OnInit {
     private nav: NavController) { }
 
   ngOnInit() {
-    this.churchService.list().flatMap(churches => {
+    this.churchService.list().then(churches => {
       return this.loginService.byChurch(churches[0]);
-    }).subscribe(token => {
+    }).then(token => {
       this.nav.setRoot(HomePage);
     });
   }
