@@ -11,37 +11,35 @@ module.exports = {
   output: {
     path: path.resolve('www/build/js'),
     filename: 'app.bundle.js',
-    pathinfo: false // show module paths in the bundle, handy for debugging
+    pathinfo: true // show module paths in the bundle, handy for debugging
   },
   module: {
-    loaders: [
-      {
-        test: /\.ts$/,
-        loader: 'awesome-typescript',
-        query: {
-          doTypeCheck: true,
-          resolveGlobs: false,
-          externals: ['typings/browser.d.ts']
-        },
-        include: path.resolve('app'),
-        exclude: /node_modules/
+    loaders: [{
+      test: /\.ts$/,
+      loader: 'awesome-typescript',
+      query: {
+        doTypeCheck: true,
+        resolveGlobs: false,
+        externals: ['typings/browser.d.ts']
       },
-      {
-        test: /\.js$/,
-        include: path.resolve('node_modules/angular2'),
-        loader: 'strip-sourcemap'
-      }
-    ],
+      include: path.resolve('app'),
+      exclude: /node_modules/
+    }, {
+      test: /\.js$/,
+      include: [path.resolve('node_modules/angular2')],
+      loader: 'strip-sourcemap'
+    }],
     noParse: [
       /es6-shim/,
       /reflect-metadata/,
-      /zone\.js(\/|\\)dist(\/|\\)zone-microtask/
+      /zone\.js(\/|\\)dist(\/|\\)zone-microtask/,
+      path.resolve('node_modules/marked/marked.min.js')
     ]
   },
   resolve: {
     root: ['app'],
     alias: {
-      'angular2': path.resolve('node_modules/angular2')
+      'angular2': path.resolve('node_modules/angular2'),
     },
     extensions: ["", ".js", ".ts"]
   }

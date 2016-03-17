@@ -3,8 +3,9 @@ import {Page, NavController, NavParams } from 'ionic-angular';
 import {ItemDetailsPage} from '../item-details/item-details';
 
 import {Informative} from '../../models/informative';
-
 import {InformativeService} from '../../providers/informativeService';
+
+import {InformativePage} from '../informative/informativePage';
 
 
 @Page({
@@ -14,7 +15,8 @@ export class HomePage implements OnInit {
   loadingInformative: boolean = true;
   informative: Informative;
 
-  constructor(private informativeService: InformativeService) { }
+  constructor(private informativeService: InformativeService,
+    private nav: NavController) { }
 
   ngOnInit() {
     this.informativeService.last().then(informative => {
@@ -23,6 +25,12 @@ export class HomePage implements OnInit {
     }).catch(error => {
       this.loadingInformative = false;
       console.log("error", error);
+    });
+  }
+
+  showInformative() {
+    this.nav.push(InformativePage, {
+      informative: this.informative
     });
   }
 }

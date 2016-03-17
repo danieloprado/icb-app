@@ -3,21 +3,17 @@ import {App, IonicApp, Platform, MenuController} from 'ionic-angular';
 import {StartPage} from './pages/start/startPage';
 import {HomePage} from './pages/home/homePage';
 
-import {ApiHttp} from './providers/apiHttp';
 import {AuthService} from './providers/authService';
-import {ChurchService} from './providers/churchService';
-import {InformativeService} from './providers/informativeService';
-import {LoginService} from './providers/loginService';
+
+import {APP_PROVIDERS} from './app.providers';
+import {APP_DIRECTIVES} from './app.directives';
+import {Markdown} from './directives/markdown';
+
 
 @App({
   templateUrl: 'build/app.html',
-  providers: [
-    ApiHttp,
-    AuthService,
-    ChurchService,
-    InformativeService,
-    LoginService
-  ],
+  providers: [APP_PROVIDERS],
+  directives: [APP_DIRECTIVES],
   config: {} // http://ionicframework.com/docs/v2/api/config/Config/
 })
 class IcbApp {

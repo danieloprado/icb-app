@@ -21,7 +21,7 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card *ngIf="!loadingInformative && informative">
+  <ion-card *ngIf="!loadingInformative && informative" (click)="showInformative()">
     <ion-card-header>
       Informativo
     </ion-card-header>
