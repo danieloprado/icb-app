@@ -1,5 +1,6 @@
 <ion-card *ngIf="loading || !event">
   <ion-card-header>
+    <ion-icon name="calendar" item-left></ion-icon>
     Próximo Evento
   </ion-card-header>
 
@@ -14,13 +15,12 @@
 
 <ion-card *ngIf="!loading && event">
   <ion-card-header>
+    <ion-icon name="calendar" item-left></ion-icon>
     Próximo Evento
   </ion-card-header>
 
   <ion-card-content>
     {{event.name}}
-
-
   </ion-card-content>
 
   <ion-item>

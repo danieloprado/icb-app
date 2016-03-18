@@ -1,5 +1,6 @@
 <ion-card *ngIf="loading || !informative">
   <ion-card-header>
+    <ion-icon name="list-box" item-left></ion-icon>
     Informativo
   </ion-card-header>
 
@@ -14,6 +15,7 @@
 
 <ion-card *ngIf="!loading && informative" (click)="details()">
   <ion-card-header>
+    <ion-icon name="list-box" item-left></ion-icon>
     Informativo
   </ion-card-header>
 
