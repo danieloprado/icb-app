@@ -2,6 +2,7 @@ import {App, IonicApp, Platform, MenuController} from 'ionic-angular';
 
 import {StartPage} from './pages/start/startPage';
 import {HomePage} from './pages/home/homePage';
+import {InformativeListPage} from './pages/informativeList/informativeListPage';
 
 import {AuthService} from './providers/authService';
 
@@ -9,14 +10,11 @@ import {APP_PROVIDERS} from './app.providers';
 import {APP_DIRECTIVES} from './app.directives';
 import {APP_PIPES} from './app.pipes';
 
-console.log(APP_PIPES);
 
 @App({
   templateUrl: 'build/app.html',
   providers: [APP_PROVIDERS, APP_PIPES],
-  //pipes: APP_PIPES,
-  //  directives: [APP_DIRECTIVES],
-  config: {} // http://ionicframework.com/docs/v2/api/config/Config/
+  config: {}
 })
 class IcbApp {
   rootPage: any = StartPage;
@@ -29,13 +27,14 @@ class IcbApp {
     private authService: AuthService
     ) {
     if (this.authService.hasToken()) {
-      this.rootPage = HomePage;
+      this.rootPage = InformativeListPage;
     }
 
     this.initializeApp();
 
     this.pages = [
-      { title: 'Inicio', icon: "home", component: HomePage }
+      { title: 'Inicio', icon: "home", component: HomePage },
+      { title: 'Informativos', icon: "list-box", component: InformativeListPage }
     ];
   }
 

@@ -32,8 +32,7 @@ module.exports = {
     noParse: [
       /es6-shim/,
       /reflect-metadata/,
-      /zone\.js(\/|\\)dist(\/|\\)zone-microtask/,
-      path.resolve('node_modules/marked/marked.min.js')
+      /zone\.js(\/|\\)dist(\/|\\)zone-microtask/
     ]
   },
   resolve: {

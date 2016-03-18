@@ -9,6 +9,18 @@ import 'rxjs/Rx';
 export class InformativeService {
   constructor(private http: ApiHttp) { }
 
+  list(): Promise<Informative[]> {
+    return this.http.get("/informative/").toPromise().then(res => {
+      localStorage.setItem("informatives", res.text());
+      return res.json().map(i => new Informative(i));
+    }).catch(res => {
+      const cache = localStorage.getItem("informatives");
+      if (!cache) throw res;
+
+      return JSON.parse(cache).map(i => new Informative(i));
+    });
+  };
+
   last(): Promise<Informative> {
     return this.http.get("/informative/last").toPromise().then(res => {
       localStorage.setItem("informative/last", res.text());
@@ -20,4 +32,6 @@ export class InformativeService {
       return new Informative(JSON.parse(cache));
     });
   };
+
+
 }

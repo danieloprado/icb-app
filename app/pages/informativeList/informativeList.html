@@ -1,0 +1,31 @@
+<ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>Informativos</ion-title>
+</ion-navbar>
+
+<ion-content *ngIf="loading">
+  <ion-card>
+    <ion-card-content text-center>
+      <ion-spinner></ion-spinner>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-content *ngIf="!loading">
+  <ion-searchbar [(ngModel)]="searchQuery"></ion-searchbar>
+
+  <ion-card>
+    <ion-list>
+      <ion-item *ngFor="#informative of informatives | informativeSearch:searchQuery" (click)="details(informative)">
+        {{informative.title}}
+        <ion-note item-right>
+          {{informative.date | date}}
+        </ion-note>
+      </ion-item>
+    </ion-list>
+
+  </ion-card>
+
+</ion-content>
