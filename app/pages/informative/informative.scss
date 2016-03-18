@@ -1,0 +1,25 @@
+.informative-page {
+  ion-card-header {
+    white-space: normal;
+    letter-spacing: 0.5px;
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  ion-card-content {
+    h2 {
+      margin: 20px 0;
+      font-weight: bold;
+    }
+
+    p {
+      letter-spacing: 0.5px;
+    }
+
+    blockquote {
+      margin-left: 20px;
+      margin-right: 20px;
+      font-style: italic;
+    }
+  }
+}

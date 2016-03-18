@@ -7,13 +7,15 @@ import {AuthService} from './providers/authService';
 
 import {APP_PROVIDERS} from './app.providers';
 import {APP_DIRECTIVES} from './app.directives';
-import {Markdown} from './directives/markdown';
+import {APP_PIPES} from './app.pipes';
 
+console.log(APP_PIPES);
 
 @App({
   templateUrl: 'build/app.html',
-  providers: [APP_PROVIDERS],
-  directives: [APP_DIRECTIVES],
+  providers: [APP_PROVIDERS, APP_PIPES],
+  //pipes: APP_PIPES,
+  //  directives: [APP_DIRECTIVES],
   config: {} // http://ionicframework.com/docs/v2/api/config/Config/
 })
 class IcbApp {

@@ -5,23 +5,21 @@
   <ion-title>Informativo</ion-title>
 </ion-navbar>
 
-<ion-content>
-
+<ion-content class="informative-page">
 
   <ion-card>
     <ion-card-header>
       {{informative.title}}
     </ion-card-header>
 
-    <ion-card-content [markdown]="informative.message"></ion-card-content>
+    <ion-card-content>
+      <span [outerHTML]="informative.message | markdown"></span>
+    </ion-card-content>
 
     <ion-item>
-      <button primary clear item-left>
-        <ion-icon name="book"></ion-icon>
-        <div>Ver</div>
-      </button>
       <ion-note item-right>
-        {{informative.date | date:'EEEE, d MMMM y'}}
+        {{informative.date}}
+        <!-- | date:'EEEE, d MMMM y' -->
       </ion-note>
     </ion-item>
   </ion-card>
