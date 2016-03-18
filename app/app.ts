@@ -27,7 +27,7 @@ class IcbApp {
     private authService: AuthService
     ) {
     if (this.authService.hasToken()) {
-      this.rootPage = InformativeListPage;
+      this.rootPage = HomePage;
     }
 
     this.initializeApp();

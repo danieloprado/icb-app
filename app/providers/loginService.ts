@@ -11,7 +11,6 @@ export class LoginService {
 
   byChurch(church: Church): Promise<string> {
     return this.http.post("/auth/login-church", { id: church._id })
-      .toPromise()
       .then(res => res.json().text);
   }
 }

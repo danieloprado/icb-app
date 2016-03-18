@@ -1,0 +1,37 @@
+<ion-card *ngIf="loading || !event">
+  <ion-card-header>
+    Próximo Evento
+  </ion-card-header>
+
+  <ion-card-content text-center *ngIf="loading">
+    <ion-spinner></ion-spinner>
+  </ion-card-content>
+
+  <ion-card-content *ngIf="!loading">
+    Nenhum evento
+  </ion-card-content>
+</ion-card>
+
+<ion-card *ngIf="!loading && event">
+  <ion-card-header>
+    Próximo Evento
+  </ion-card-header>
+
+  <ion-card-content>
+    {{event.name}}
+
+
+  </ion-card-content>
+
+  <ion-item>
+    <button primary clear item-left>
+      <ion-icon name="book"></ion-icon>
+      <div>Detalhes</div>
+    </button>
+
+    <div item-right>
+      {{event.dates[0].beginDate | date}}
+    </div>
+
+  </ion-item>
+</ion-card>

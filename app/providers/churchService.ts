@@ -10,6 +10,6 @@ export class ChurchService {
   constructor(private http: ApiHttp) { }
 
   list(): Promise<Church[]> {
-    return this.http.get("/church").toPromise().then(res => res.json().map(i => new Church(i)));
+    return this.http.get("/church").then(res => res.json().map(i => new Church(i)));
   };
 }

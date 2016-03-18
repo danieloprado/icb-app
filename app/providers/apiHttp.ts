@@ -29,7 +29,7 @@ export class ApiHttp {
       this.authService.setToken(res.headers.get("X-Token"));
     });
 
-    return request;
+    return request.toPromise();
   }
 
   get(url: string, options?: RequestOptionsArgs) {

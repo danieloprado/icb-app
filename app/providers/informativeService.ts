@@ -10,7 +10,7 @@ export class InformativeService {
   constructor(private http: ApiHttp) { }
 
   list(): Promise<Informative[]> {
-    return this.http.get("/informative/").toPromise().then(res => {
+    return this.http.get("/informative/").then(res => {
       localStorage.setItem("informatives", res.text());
       return res.json().map(i => new Informative(i));
     }).catch(res => {
@@ -22,7 +22,7 @@ export class InformativeService {
   };
 
   last(): Promise<Informative> {
-    return this.http.get("/informative/last").toPromise().then(res => {
+    return this.http.get("/informative/last").then(res => {
       localStorage.setItem("informative/last", res.text());
       return res.text() ? new Informative(res.json()) : null;
     }).catch(res => {
