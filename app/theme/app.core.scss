@@ -9,6 +9,10 @@
 @import "../pages/informative/informative";
 @import "../pages/start/start";
 
+.nowrap {
+  white-space: nowrap;
+}
+
 ion-menu {
   header {
     background: $menu-toolbar-background;

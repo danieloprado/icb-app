@@ -1,7 +1,11 @@
 var path = require('path');
+var webpack = require('webpack');
 
 
 module.exports = {
+  plugins: [
+    //new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+  ],
   entry: [
     path.normalize('es6-shim/es6-shim.min'),
     'reflect-metadata',
@@ -39,6 +43,7 @@ module.exports = {
     root: ['app'],
     alias: {
       'angular2': path.resolve('node_modules/angular2'),
+      '~moment': path.resolve('node_modules/moment')
     },
     extensions: ["", ".js", ".ts"]
   }
