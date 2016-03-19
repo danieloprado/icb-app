@@ -7,8 +7,6 @@ moment.locale("pt-BR");
 export class DatePipe implements PipeTransform {
 
   transform(value: string, args: string[]): any {
-    console.log(value, args);
-
     let format = "MMM DD, YYYY";
 
     if (args && args[0]) {
@@ -27,7 +25,6 @@ export class DatePipe implements PipeTransform {
       });
     }
 
-    console.log(format);
     return moment(value).format(format);
   }
 }
