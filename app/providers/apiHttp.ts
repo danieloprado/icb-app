@@ -6,13 +6,13 @@ import {AuthService} from './authService';
 
 @Injectable()
 export class ApiHttp {
-  private API_URL = "http://192.168.1.19:3000/api/app";
+  private API_URL = "http://192.168.0.68:3000/api/app";
 
   constructor(private http: Http, private authService: AuthService) { }
 
   private defaultHeaders(options?: RequestOptionsArgs): RequestOptionsArgs {
-    if (!options) options = {};
-    if (!options.headers) options.headers = new Headers();
+    options = options || {};
+    options.headers = options.headers || new Headers();
 
     options.headers.append("Content-type", "application/json");
 
@@ -23,23 +23,26 @@ export class ApiHttp {
     return options;
   }
 
-  private subscribeForToken(request: Observable<Response>) {
-    request.subscribe(res => {
-      if (!res.headers.has("X-Token")) return;
-      this.authService.setToken(res.headers.get("X-Token"));
-    });
+  private inspectToken(response: Response): Response {
+    if (response.headers.has("X-Token")) {
+      this.authService.setToken(response.headers.get("X-Token"));
+    }
 
-    return request.toPromise();
+    return response;
   }
 
-  get(url: string, options?: RequestOptionsArgs) {
+  get(url: string, options?: RequestOptionsArgs): Promise<Response> {
     options = this.defaultHeaders(options);
-    return this.subscribeForToken(this.http.get(this.API_URL + url, options));
+    return this.http.get(this.API_URL + url, options)
+      .toPromise()
+      .then(res => this.inspectToken(res));
   }
 
-  post(url: string, body: any, options?: RequestOptionsArgs) {
+  post(url: string, body: any, options?: RequestOptionsArgs): Promise<Response> {
     options = this.defaultHeaders(options);
-    return this.subscribeForToken(this.http.post(this.API_URL + url, JSON.stringify(body), options));
+    return this.http.post(this.API_URL + url, JSON.stringify(body), options)
+      .toPromise()
+      .then(res => this.inspectToken(res));
   }
 
 }
