@@ -13,6 +13,10 @@
   white-space: nowrap;
 }
 
+button[disabled] {
+  opacity: 0.5;
+}
+
 ion-menu {
   header {
     background: $menu-toolbar-background;

@@ -2,8 +2,8 @@
   <ion-title>Informativo</ion-title>
 
   <ion-buttons end class="button-font">
-    <button royal (click)="decreaseFont()">A-</button>
-    <button royal (click)="increaseFont()">A+</button>
+    <button royal (click)="decreaseFont()" [disabled]="fontSize <= 1.1">A-</button>
+    <button (click)="increaseFont()" [disabled]="fontSize >= 2">A+</button>
   </ion-buttons>
 </ion-navbar>
 

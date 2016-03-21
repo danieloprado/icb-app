@@ -1,4 +1,4 @@
-import {App, IonicApp, Platform, MenuController} from 'ionic-angular';
+import {App, IonicApp, Platform, MenuController, NavController} from 'ionic-angular';
 
 import {StartPage} from './pages/start/startPage';
 import {HomePage} from './pages/home/homePage';
@@ -54,13 +54,32 @@ class IcbApp {
       // For example, we might change the StatusBar color. This one below is
       // good for dark backgrounds and light text:
       // StatusBar.setStyle(StatusBar.LIGHT_CONTENT)
+
+      this.registerBackButtonListener();
+    });
+  }
+
+  getNav(): NavController {
+    return this.app.getComponent('nav')
+  }
+
+  registerBackButtonListener() {
+    let nav = this.getNav();
+
+    document.addEventListener('backbutton', () => {
+      if (nav.canGoBack()) {
+        nav.pop();
+        return;
+      }
+
+      this.platform.exitApp();
     });
   }
 
   openPage(page) {
     this.menu.close();
 
-    let nav = this.app.getComponent('nav');
+    let nav = this.getNav();
     nav.setRoot(page.component);
   }
 }
