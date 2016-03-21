@@ -10,17 +10,19 @@ export class ApiHttp {
 
   constructor(private http: Http, private authService: AuthService) { }
 
-  private defaultHeaders(options?: RequestOptionsArgs): RequestOptionsArgs {
-    options = options || {};
-    options.headers = options.headers || new Headers();
+  private defaultHeaders(options?: RequestOptionsArgs): Promise<RequestOptionsArgs> {
+    return this.authService.getToken().then(token => {
+      options = options || {};
+      options.headers = options.headers || new Headers();
 
-    options.headers.append("Content-type", "application/json");
+      options.headers.append("Content-type", "application/json");
 
-    if (this.authService.hasToken()) {
-      options.headers.append("Authorization", `Bearer ${this.authService.getToken() }`);
-    }
+      if (token) {
+        options.headers.append("Authorization", `Bearer ${token}`);
+      }
 
-    return options;
+      return options;
+    });;
   }
 
   private inspectToken(response: Response): Response {
@@ -32,16 +34,14 @@ export class ApiHttp {
   }
 
   get(url: string, options?: RequestOptionsArgs): Promise<Response> {
-    options = this.defaultHeaders(options);
-    return this.http.get(this.API_URL + url, options)
-      .toPromise()
+    return this.defaultHeaders(options)
+      .then(options => this.http.get(this.API_URL + url, options).toPromise())
       .then(res => this.inspectToken(res));
   }
 
   post(url: string, body: any, options?: RequestOptionsArgs): Promise<Response> {
-    options = this.defaultHeaders(options);
-    return this.http.post(this.API_URL + url, JSON.stringify(body), options)
-      .toPromise()
+    return this.defaultHeaders(options)
+      .then(options => this.http.post(this.API_URL + url, JSON.stringify(body), options).toPromise())
       .then(res => this.inspectToken(res));
   }
 

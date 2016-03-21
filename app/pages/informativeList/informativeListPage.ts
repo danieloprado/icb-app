@@ -1,6 +1,5 @@
 import {OnInit} from 'angular2/core';
 import {Page, NavController, NavParams } from 'ionic-angular';
-import {ItemDetailsPage} from '../item-details/item-details';
 
 import {informativeListSearchPipe} from './informativeListSearchPipe';
 

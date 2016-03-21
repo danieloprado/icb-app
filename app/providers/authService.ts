@@ -1,13 +1,22 @@
+import {Storage, SqlStorage} from 'ionic-angular';
+
 export class AuthService {
-  setToken(token: string): void {
-    localStorage.setItem("token", token);
+  storage: Storage;
+
+  constructor() {
+    this.storage = new Storage(SqlStorage);
+    console.log("storage", this.storage);
   }
 
-  getToken(): string {
-    return localStorage.getItem("token");
+  setToken(token: string): Promise<any> {
+    return this.storage.set("token", token);
   }
 
-  hasToken(): boolean {
-    return !!this.getToken();
+  getToken(): Promise<any> {
+    return this.storage.get("token");
+  }
+
+  hasToken(): Promise<boolean> {
+    return this.getToken();
   }
 }

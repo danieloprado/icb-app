@@ -1,5 +1,5 @@
 import {OnInit} from 'angular2/core';
-import {Page, NavController} from 'ionic-angular';
+import {Page, NavController, NavParams} from 'ionic-angular';
 
 import {HomePage} from '../home/homePage';
 

@@ -1,10 +1,8 @@
 import {App, IonicApp, Platform, MenuController, NavController} from 'ionic-angular';
 
-import {StartPage} from './pages/start/startPage';
 import {HomePage} from './pages/home/homePage';
 import {InformativeListPage} from './pages/informativeList/informativeListPage';
 
-import {AuthService} from './providers/authService';
 
 import {APP_PROVIDERS} from './app.providers';
 import {APP_DIRECTIVES} from './app.directives';
@@ -17,19 +15,14 @@ import {APP_PIPES} from './app.pipes';
   config: {}
 })
 class IcbApp {
-  rootPage: any = StartPage;
+  rootPage: any = HomePage;
   pages: Array<{ title: string, icon: string, component: any }>;
 
   constructor(
     private app: IonicApp,
     private platform: Platform,
-    private menu: MenuController,
-    private authService: AuthService
+    private menu: MenuController
     ) {
-    if (this.authService.hasToken()) {
-      this.rootPage = HomePage;
-    }
-
     this.initializeApp();
 
     this.pages = [
