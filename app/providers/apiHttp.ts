@@ -6,7 +6,7 @@ import {AuthService} from './authService';
 
 @Injectable()
 export class ApiHttp {
-  private API_URL = "http://192.168.0.68:3000/api/app";
+  private API_URL = "http://192.168.1.19:3000/api/app";
 
   constructor(private http: Http, private authService: AuthService) { }
 

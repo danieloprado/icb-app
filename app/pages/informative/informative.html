@@ -1,27 +1,22 @@
-<ion-navbar *navbar>
-  <!-- <button menuToggle>
-    <ion-icon name="menu"></ion-icon>
-  </button> -->
+<ion-navbar *navbar class="informative-page">
   <ion-title>Informativo</ion-title>
+
+  <ion-buttons end class="button-font">
+    <button royal (click)="decreaseFont()">A-</button>
+    <button royal (click)="increaseFont()">A+</button>
+  </ion-buttons>
 </ion-navbar>
 
-<ion-content class="informative-page">
+<ion-content class="informative-page" padding [ngStyle]="{ 'font-size': fontSize + 'rem' }">
 
-  <ion-card>
-    <ion-card-header>
-      {{informative.title}}
-    </ion-card-header>
+  <h1>
+    {{informative.title}}
+    <small>{{informative.date | date}}</small>
+  </h1>
 
-    <ion-card-content>
-      <span [outerHTML]="informative.message | markdown"></span>
-    </ion-card-content>
+  <div>
 
-    <ion-item>
-      <ion-note item-right>
-        {{informative.date | date}}
-        <!-- | date:'EEEE, d MMMM y' -->
-      </ion-note>
-    </ion-item>
-  </ion-card>
+    <span [outerHTML]="informative.message | markdown"></span>
+  </div>
 
 </ion-content>

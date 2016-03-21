@@ -54,14 +54,8 @@ ion-menu {
   }
 }
 
-ion-page {
-  > ion-navbar .toolbar-background {
-    background: $white;
-  }
-
-  > ion-content {
-    background: $main-content-background;
-  }
+ion-page > ion-content {
+  background: $main-content-background;
 }
 
 scroll-content {

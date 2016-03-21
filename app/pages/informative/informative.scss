@@ -1,25 +1,44 @@
 .informative-page {
-  ion-card-header {
+  font-size: 1.5rem;
+
+  .button-font .button-inner {
+    text-transform: none;
+    font-size: 1.9rem;
+    letter-spacing: 0.5px;
+  }
+
+  h1 {
     white-space: normal;
     letter-spacing: 0.5px;
     font-size: 2rem;
     text-align: center;
+    border-bottom: 1px solid $list-border-color;
+    padding-top: 20px;
+    margin-bottom: 40px;
+    font-weight: normal;
+
+    small {
+      display: block;
+      text-align: right;
+      margin: 10px 0;
+      font-weight: normal;
+      opacity: 0.6;
+    }
   }
 
-  ion-card-content {
-    h2 {
-      margin: 20px 0;
-      font-weight: bold;
-    }
+  h2 {
+    margin: 20px 0;
+    font-weight: bold;
+    font-size: 130%;
+  }
 
-    p {
-      letter-spacing: 0.5px;
-    }
+  p {
+    letter-spacing: 0.5px;
+  }
 
-    blockquote {
-      margin-left: 20px;
-      margin-right: 20px;
-      font-style: italic;
-    }
+  blockquote {
+    margin-left: 20px;
+    margin-right: 20px;
+    font-style: italic;
   }
 }
