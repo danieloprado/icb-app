@@ -13,6 +13,7 @@
  Ionic will use its default values when a custom variable isn't provided.
 */
 $toolbar-ios-active-color: $toolbar-text-color;
+$searchbar-ios-background-color: lighten($toolbar-background, 10%);
 @import "ionic.ios";
 /*
  App Shared Sass

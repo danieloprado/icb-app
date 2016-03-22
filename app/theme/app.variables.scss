@@ -1,15 +1,16 @@
 $white: white;
-$colors: ( primary: #86BD90, secondary: #32db64, danger: #f53d3d, light: #f4f4f4, dark: #222, favorite: #69BB7B );
+$colors: ( primary: #6FBB7E, secondary: #32db64, danger: #f53d3d, light: #f4f4f4, dark: #222, favorite: #69BB7B );
 $text-color: #484848;
-/*****
-Menu
-******/
-$menu-toolbar-background: #263238;
-$menu-background: #37474F;
 /**************
  Main Content
  *************/
-$toolbar-background: $menu-background;
+$toolbar-background: #52945F; // $menu-background;
 $toolbar-border-color: $toolbar-background;
 $toolbar-text-color: $white;
 $main-content-background: #F2F2F2;
+/*****
+Menu
+******/
+$menu-toolbar-background: darken($toolbar-background, 10%);
+$menu-background: $white;
+$menu-color: text-color;

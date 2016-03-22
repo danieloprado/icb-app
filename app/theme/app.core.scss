@@ -23,7 +23,7 @@ ion-menu {
     background: $menu-toolbar-background;
     border: none;
     text-align: center;
-    padding: 10px 0;
+    padding: 20px 0;
 
     img {
       max-width: 100px;
@@ -43,7 +43,7 @@ ion-menu {
     ion-list {
       .item {
         background: none;
-        color: $white;
+        color: $menu-color;
         border-top: none !important;
         border-bottom: none !important;
 

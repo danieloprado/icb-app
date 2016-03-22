@@ -22,6 +22,8 @@
   <ion-card-content>
     <h2>{{event.name}}</h2>
 
+    <button primary>Ver</button>
+
     <div *ngFor="#date of event.dates" class="event-dates">
       <strong>{{date.beginDate | date:'EEEE'}} </strong>
       <br/>{{date.beginDate | date:"d 'de' MMMM y HH:mm"}} até {{date.endDate | date:'HH:mm'}}
