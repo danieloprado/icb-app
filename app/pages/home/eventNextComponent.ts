@@ -3,6 +3,7 @@ import { NavController, NavParams, IONIC_DIRECTIVES } from 'ionic-angular';
 
 import {Event} from '../../models/event';
 import {EventService} from '../../providers/eventService';
+import {EventPage} from '../event/eventPage';
 
 @Component({
   selector: 'event-last',
@@ -20,5 +21,11 @@ export class EventNextComponent implements OnInit {
       this.loading = false;
       this.event = event;
     });
+  }
+
+  details() {
+    this.nav.push(EventPage, {
+      event: this.event
+    })
   }
 }

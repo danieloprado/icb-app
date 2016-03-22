@@ -1,5 +1,13 @@
 .home-page {
-  event-last .event-dates {
-    margin-top: 5px;
+  event-last {
+    h2 {
+      font-weight: lighter;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    .event-dates {
+      margin-top: 5px;
+    }
   }
 }

@@ -1,16 +1,21 @@
 import {Response} from 'angular2/http';
+import {Storage, LocalStorage} from 'ionic-angular';
+
+const storage = new Storage(LocalStorage);
 
 export function CacheService(key: string, promise: Promise<Response>) {
   key = "api/" + key;
 
   return promise
     .then(res => {
-    localStorage.setItem(key, res.text());
+    storage.setJson(key, res.json());
     return res.json();
   }).catch(error => {
-    const cache = localStorage.getItem(key);
+    if (error.status != 200) throw error;
+
+    const cache = storage.getJson(key);
     if (!cache) throw error;
 
-    return JSON.parse(cache);
+    return cache;
   })
 };

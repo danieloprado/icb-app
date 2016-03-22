@@ -1,0 +1,26 @@
+<ion-navbar *navbar>
+  <ion-title>Evento</ion-title>
+</ion-navbar>
+
+<ion-content class="event-page details-page">
+
+  <h1>{{event.name}}</h1>
+
+  <div class="content">
+
+    <ul class="event-dates">
+      <li *ngFor="#date of event.dates">
+        <strong>{{date.beginDate | date:'EEEE'}} </strong>
+        <br/>{{date.beginDate | date:"d 'de' MMMM y HH:mm"}} até {{date.endDate | date:'HH:mm'}}
+      </li>
+    </ul>
+
+
+    <p>{{event.description}}</p>
+
+    <div *ngIf="event.location">
+      {{event.location.address}}
+    </div>
+  </div>
+
+</ion-content>

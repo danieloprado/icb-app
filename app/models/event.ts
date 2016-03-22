@@ -1,4 +1,5 @@
 import {EventDate} from './eventDate';
+import {Location} from './location';
 
 export class Event {
   _id: string;
@@ -8,6 +9,7 @@ export class Event {
   createdAt: Date;
   updateAt: Date;
   dates: EventDate[];
+  location: Location;
 
   constructor(data: any) {
     this._id = data._id;
@@ -17,5 +19,9 @@ export class Event {
     this.createdAt = new Date(data.createdAt);
     this.updateAt = new Date(data.updateAt);
     this.dates = data.dates.map(d => new EventDate(d));
+
+    if (data.location) {
+      this.location = new Location(data.location);
+    }
   }
 }

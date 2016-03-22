@@ -13,7 +13,7 @@
   </ion-card-content>
 </ion-card>
 
-<ion-card *ngIf="!loading && event">
+<ion-card *ngIf="!loading && event" (click)="details()">
   <ion-card-header>
     <ion-icon name="calendar" item-left></ion-icon>
     Próximo Evento

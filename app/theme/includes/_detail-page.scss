@@ -1,0 +1,32 @@
+.details-page {
+  background: $white;
+  font-size: 1.5rem;
+
+  h1 {
+    white-space: normal;
+    letter-spacing: 0.5px;
+    font-size: 2rem;
+    padding: 20px;
+    margin: 0;
+    font-weight: normal;
+    color: $white;
+    background: lighten($toolbar-background, 5%);
+
+    small {
+      display: block;
+      text-align: right;
+      margin-top: 15px;
+      font-weight: normal;
+      opacity: 0.6;
+      color: $white;
+    }
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  p {
+    letter-spacing: 0.5px;
+  }
+}

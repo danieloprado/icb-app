@@ -7,15 +7,14 @@
   </ion-buttons>
 </ion-navbar>
 
-<ion-content class="informative-page" padding [ngStyle]="{ 'font-size': fontSize + 'rem' }">
+<ion-content class="informative-page details-page" [ngStyle]="{ 'font-size': fontSize + 'rem' }">
 
   <h1>
     {{informative.title}}
     <small>{{informative.date | date}}</small>
   </h1>
 
-  <div>
-
+  <div class="content">
     <span [outerHTML]="informative.message | markdown"></span>
   </div>
 

@@ -1,39 +1,17 @@
 .informative-page {
-  font-size: 1.5rem;
-
   .button-font .button-inner {
     text-transform: none;
     font-size: 1.9rem;
     letter-spacing: 0.5px;
   }
 
-  h1 {
-    white-space: normal;
-    letter-spacing: 0.5px;
-    font-size: 2rem;
-    text-align: center;
-    border-bottom: 1px solid $list-border-color;
-    padding-top: 20px;
-    margin-bottom: 40px;
-    font-weight: normal;
-
-    small {
-      display: block;
-      text-align: right;
-      margin: 10px 0;
-      font-weight: normal;
-      opacity: 0.6;
-    }
-  }
-
   h2 {
     margin: 20px 0;
-    font-weight: bold;
+    font-weight: normal;
     font-size: 130%;
   }
 
   p {
-    letter-spacing: 0.5px;
     text-indent: 20px;
   }
 
