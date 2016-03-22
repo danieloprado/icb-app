@@ -20,3 +20,7 @@
 ion-page > ion-navbar {
   border-bottom: 1px solid $toolbar-wp-border-color;
 }
+
+ion-searchbar {
+  border-color: lighten($toolbar-background, 10%);
+}
