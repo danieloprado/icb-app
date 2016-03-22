@@ -15,20 +15,20 @@
 
 <ion-content *ngIf="!loading" class="event-list-page">
 
-  <ion-card>
-    <ion-list>
-      <ion-item *ngFor="#event of events" (click)="details(event)">
-        {{event.name}}
+  <ion-list>
+    <ion-item *ngFor="#event of events" (click)="details(event)">
 
-        <ul class="event-dates">
-          <li *ngFor="#date of event.dates">
-            <strong>{{date.beginDate | date:'EEEE'}} </strong>
-            <br/>{{date.beginDate | date:"d 'de' MMMM y HH:mm"}} até {{date.endDate | date:'HH:mm'}}
-          </li>
-        </ul>
-      </ion-item>
-    </ion-list>
+      <ion-icon name="calendar" item-left></ion-icon>
+      {{event.name}}
 
-  </ion-card>
+      <ul class="event-dates">
+        <li *ngFor="#date of event.dates">
+          <strong>{{date.beginDate | date:'EEEE'}} </strong>
+          <br/>{{date.beginDate | date:"d 'de' MMMM y HH:mm"}} até {{date.endDate | date:'HH:mm'}}
+        </li>
+      </ul>
+
+    </ion-item>
+  </ion-list>
 
 </ion-content>

@@ -12,7 +12,7 @@ import {APP_PIPES} from './app.pipes';
 
 @App({
   templateUrl: 'build/app.html',
-  providers: [APP_PROVIDERS, APP_PIPES],
+  providers: [APP_PROVIDERS, APP_PIPES, APP_DIRECTIVES],
   config: {}
 })
 class IcbApp {

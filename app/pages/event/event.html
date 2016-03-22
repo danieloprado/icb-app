@@ -7,7 +7,6 @@
   <h1>{{event.name}}</h1>
 
   <div class="content">
-
     <ul class="event-dates">
       <li *ngFor="#date of event.dates">
         <strong>{{date.beginDate | date:'EEEE'}} </strong>
@@ -15,12 +14,15 @@
       </li>
     </ul>
 
-
     <p>{{event.description}}</p>
 
     <div *ngIf="event.location">
       {{event.location.address}}
     </div>
   </div>
+
+  <span *ngIf="event.location">
+    <static-map [lat]="event.location.lat" [lng]="event.location.lng"></static-map>
+  </span>
 
 </ion-content>
