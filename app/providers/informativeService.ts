@@ -12,7 +12,7 @@ export class InformativeService {
   constructor(private http: ApiHttp) { }
 
   list(): Promise<Informative[]> {
-    return CacheService("informative", this.http.get("/informative"))
+    return CacheService("informative/list", this.http.get("/informative"))
       .then(data => data.map(i => new Informative(i)));
   };
 

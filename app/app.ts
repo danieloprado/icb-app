@@ -1,6 +1,7 @@
 import {App, IonicApp, Platform, MenuController, NavController} from 'ionic-angular';
 
 import {HomePage} from './pages/home/homePage';
+import {EventListPage} from './pages/eventList/eventListPage';
 import {InformativeListPage} from './pages/informativeList/informativeListPage';
 
 
@@ -27,6 +28,7 @@ class IcbApp {
 
     this.pages = [
       { title: 'Inicio', icon: "home", component: HomePage },
+      { title: 'Agenda', icon: "calendar", component: EventListPage },
       { title: 'Informativos', icon: "list-box", component: InformativeListPage }
     ];
   }

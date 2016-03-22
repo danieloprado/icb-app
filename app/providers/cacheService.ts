@@ -13,9 +13,10 @@ export function CacheService(key: string, promise: Promise<Response>) {
   }).catch(error => {
     if (error.status != 200) throw error;
 
-    const cache = storage.getJson(key);
-    if (!cache) throw error;
+    return storage.getJson(key).then(cache => {
+      if (!cache) throw error;
+      return cache;
+    });
 
-    return cache;
   })
 };

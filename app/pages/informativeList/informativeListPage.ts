@@ -1,11 +1,9 @@
 import {OnInit} from 'angular2/core';
 import {Page, NavController, NavParams } from 'ionic-angular';
 
-import {informativeListSearchPipe} from './informativeListSearchPipe';
-
 import {Informative} from '../../models/informative';
 import {InformativeService} from '../../providers/informativeService';
-
+import {informativeListSearchPipe} from './informativeListSearchPipe';
 import {InformativePage} from '../informative/informativePage';
 
 
@@ -14,16 +12,19 @@ import {InformativePage} from '../informative/informativePage';
   pipes: [informativeListSearchPipe]
 })
 export class InformativeListPage implements OnInit {
-  loading: boolean = true;
+  loading: boolean;
   searchQuery: string;
   informatives: Informative[];
 
-  constructor(private informativeService: InformativeService,
-    private nav: NavController) {
+  constructor(
+    private informativeService: InformativeService,
+    private nav: NavController
+    ) {
     this.searchQuery = "";
   }
 
   ngOnInit() {
+    this.loading = true;
     this.informativeService.list().then(informatives => {
       this.loading = false;
       this.informatives = informatives;

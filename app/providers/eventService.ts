@@ -16,5 +16,10 @@ export class EventService {
       .then(event => event ? new Event(event) : null);
   };
 
+  list(): Promise<Event[]> {
+    return CacheService("event/list", this.http.get("/event"))
+      .then(events => events.map(e=> new Event(e)))
+  }
+
 
 }

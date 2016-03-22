@@ -6,6 +6,12 @@
 </ion-navbar>
 
 <ion-content class="home-page" *ngIf="verified">
+
+  <ion-refresher (refresh)="refresh($event)">
+    <ion-refresher-content pullingText="Atualizar" refreshingText="Atualizando...">
+    </ion-refresher-content>
+  </ion-refresher>
+
   <informative-last> </informative-last>
   <event-last></event-last>
 </ion-content>

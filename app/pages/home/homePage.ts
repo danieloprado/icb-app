@@ -28,4 +28,11 @@ export class HomePage {
       this.nav.setRoot(StartPage);
     });
   }
+
+  refresh(refresher) {
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
 }

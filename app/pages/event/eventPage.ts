@@ -13,7 +13,6 @@ export class EventPage implements OnInit {
 
   ngOnInit() {
     this.event = this.params.get("event");
-    console.log(this.event);
   }
 
 }
