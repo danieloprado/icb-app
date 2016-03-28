@@ -1,0 +1,23 @@
+ion-card(*ngIf='loading || !event')
+	ion-card-header
+		ion-icon(name='calendar', item-left)
+		| Próximo Evento
+
+	ion-card-content(text-center, *ngIf='loading')
+		ion-spinner
+
+	ion-card-content(*ngIf='!loading')
+		| Nenhum evento
+
+ion-card(*ngIf='!loading && event', (click)='details()')
+	ion-card-header
+		ion-icon(name='calendar', item-left)
+		| Próximo Evento
+
+	ion-card-content
+		h2 {{event.name}}
+		.event-dates(*ngFor='#date of event.dates')
+			strong {{date.beginDate | date:'EEEE'}} 
+			br
+			| {{date.beginDate | date:"d 'de' MMMM y HH:mm"}} até 
+			| {{date.endDate | date:'HH:mm'}}

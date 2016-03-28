@@ -1,0 +1,25 @@
+ion-navbar(*navbar='')
+	button(menuToggle='')
+		ion-icon(name='menu')
+	ion-title Agenda
+
+ion-content(*ngIf='loading')
+	ion-card
+		ion-card-content(text-center)
+			ion-spinner
+
+ion-content.event-list-page(*ngIf='!loading')
+	ion-list
+		ion-item(*ngIf='events.length == 0')
+			| Nenhum evento
+
+		ion-item(*ngFor='#event of events', (click)='details(event)')
+			ion-icon(name='calendar', item-left)
+			| {{event.name}}
+
+			ul.event-dates
+				li(*ngFor='#date of event.dates')
+					strong {{date.beginDate | date:'EEEE'}} 
+					br
+					| {{date.beginDate | date:"d 'de' MMMM y HH:mm"}} até 
+					| {{date.endDate | date:'HH:mm'}}

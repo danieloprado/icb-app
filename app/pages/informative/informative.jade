@@ -1,0 +1,14 @@
+ion-navbar.informative-page(*navbar='')
+	ion-title Informativo
+
+	ion-buttons.button-font(end)
+		button((click)='decreaseFont()', [disabled]='fontSize <= 1.1') A-
+		button((click)='increaseFont()', [disabled]='fontSize >= 2') A+
+
+ion-content.informative-page.details-page([ngStyle]="{ 'font-size': fontSize + 'rem' }")
+	h1 
+		| {{informative.title}}
+		small {{informative.date | date}}
+
+	.content
+		span([outerHTML]='informative.message | markdown')

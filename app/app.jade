@@ -1,0 +1,12 @@
+ion-menu([content]='content')
+	ion-content
+		header
+			img(src='img/logo.png')
+			p ICB Sorocaba
+
+		ion-list
+			button(light, ion-item, *ngFor='#p of pages', (click)='openPage(p)')
+				ion-icon(name='{{p.icon}}', item-left)
+				| {{p.title}}
+
+ion-nav#nav([root]='rootPage', #content='', swipe-back-enabled='false')

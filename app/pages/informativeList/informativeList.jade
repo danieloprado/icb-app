@@ -1,0 +1,19 @@
+ion-navbar(*navbar='')
+	button(menuToggle='')
+		ion-icon(name='menu')
+	ion-title Informativos
+
+ion-content(*ngIf='loading')
+	ion-card
+		ion-card-content(text-center)
+			ion-spinner
+
+ion-content(*ngIf='!loading')
+
+	ion-searchbar([(ngModel)]='searchQuery')
+
+	ion-list
+		ion-item((click)='details(informative)', *ngFor='#informative of informatives | informativeSearch:searchQuery')
+			| {{informative.title}}
+			ion-note(item-right)
+				| {{informative.date | date}}

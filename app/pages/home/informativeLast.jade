@@ -1,0 +1,22 @@
+ion-card(*ngIf='loading || !informative')
+	ion-card-header
+		ion-icon(name='list-box', item-left)
+		| Informativo
+
+	ion-card-content(text-center, *ngIf='loading')
+		ion-spinner
+
+	ion-card-content(*ngIf='!loading')
+		| Nenhum informativo adicionado
+
+ion-card(*ngIf='!loading && informative', (click)='details()')
+	ion-card-header
+		ion-icon(name='list-box', item-left)
+		| Informativo
+
+	ion-card-content
+		| {{informative.title}}
+	ion-item
+
+		.nowrap(item-right)
+			| {{informative.date | date }}
