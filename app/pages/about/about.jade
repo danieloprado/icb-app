@@ -1,0 +1,22 @@
+ion-navbar(*navbar='')
+	button(menuToggle='')
+		ion-icon(name='menu')
+	ion-title Sobre
+
+ion-content(*ngIf='loading')
+	ion-card
+		ion-card-content(text-center)
+			ion-spinner
+
+ion-content(*ngIf='!loading && church')
+	ion-card
+		span(*ngIf='church.location')
+			static-map([lat]='church.location.lat', [lng]='church.location.lng')
+
+		ion-card-header {{church.name}}
+		ion-card-content
+			p 
+				a(href="mailto:{{church.email}}") {{church.email}}
+			p {{church.phone}}
+
+			p(*ngIf='church.location') {{church.location.address}}
