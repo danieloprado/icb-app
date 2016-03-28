@@ -16,16 +16,14 @@
 <ion-content *ngIf="!loading">
   <ion-searchbar [(ngModel)]="searchQuery"></ion-searchbar>
 
-  <ion-card>
-    <ion-list>
-      <ion-item *ngFor="#informative of informatives | informativeSearch:searchQuery" (click)="details(informative)">
-        {{informative.title}}
-        <ion-note item-right>
-          {{informative.date | date}}
-        </ion-note>
-      </ion-item>
-    </ion-list>
+  <ion-list>
+    <ion-item *ngFor="#informative of informatives | informativeSearch:searchQuery" (click)="details(informative)">
+      {{informative.title}}
+      <ion-note item-right>
+        {{informative.date | date}}
+      </ion-note>
+    </ion-item>
+  </ion-list>
 
-  </ion-card>
 
 </ion-content>

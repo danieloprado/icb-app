@@ -1,0 +1,19 @@
+ion-navbar(*navbar='')
+	ion-title Agenda
+
+ion-content.event-page.details-page
+	h1 {{event.name}}
+
+	.content
+		ul.event-dates
+			li(*ngFor='#date of event.dates')
+				strong {{date.beginDate | date:'EEEE'}} 
+				br
+				| {{date.beginDate | date:"d 'de' MMMM y HH:mm"}} até {{date.endDate | date:'HH:mm'}}
+
+		p {{event.description}}
+		div(*ngIf='event.location')
+			| {{event.location.address}}
+
+	span(*ngIf='event.location')
+		static-map([lat]='event.location.lat', [lng]='event.location.lng')

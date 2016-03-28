@@ -16,6 +16,10 @@
 <ion-content *ngIf="!loading" class="event-list-page">
 
   <ion-list>
+    <ion-item *ngIf="events.length == 0">
+      Nenhum evento
+    </ion-item>
+
     <ion-item *ngFor="#event of events" (click)="details(event)">
 
       <ion-icon name="calendar" item-left></ion-icon>
