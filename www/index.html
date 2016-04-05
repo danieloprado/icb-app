@@ -5,8 +5,23 @@
   <title>Ionic</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <!-- <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'" <link ios-href="build/css/app.ios.css" rel="stylesheet"> -->
-
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src *; img-src *; style-Src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'" /> -->
+  <meta http-equiv="Content-Security-Policy" content="default-src *;
+                 script-src 'self' 'unsafe-inline' 'unsafe-eval'
+                             127.0.0.1:*
+                             10.84.77.141:*
+                             http://*.gstatic.com
+                             http://*.googleapis.com
+                             https://*.gstatic.com
+                             https://*.googleapis.com
+                             ;
+                 style-src  'self' 'unsafe-inline'
+                             127.0.0.1
+                             http://*.gstatic.com
+                             http://*.googleapis.com
+                             https://*.gstatic.com
+                             https://*.googleapis.com
+  ">
   <link md-href="build/css/app.md.css" rel="stylesheet">
   <link wp-href="build/css/app.wp.css" rel="stylesheet">
   <link ios-href="build/css/app.ios.css" rel="stylesheet">
